@@ -5,7 +5,7 @@ import { FiSettings } from 'react-icons/fi';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Footer, Navbar, Sidebar, ThemeSettings } from './components';
-import { Customers, Ecommerce, Employees, Orders } from './pages';
+import { Customers, Ecommerce, Employees, Line, Orders } from './pages';
 
 import { useStateContext } from './contexts/ContextProvider';
 
@@ -71,6 +71,8 @@ const App = () => {
                 <Route path="/employees" element={<Employees />} />
                 <Route path="/customers" element={<Customers />} />
 
+                 {/* charts  */}
+                <Route path="/line" element={<Line />} />
               </Routes>
             </div>
             <Footer />

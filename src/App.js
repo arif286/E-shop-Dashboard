@@ -5,7 +5,7 @@ import { FiSettings } from 'react-icons/fi';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Footer, Navbar, Sidebar, ThemeSettings } from './components';
-import { Ecommerce } from './pages';
+import { Ecommerce, Orders } from './pages';
 
 import { useStateContext } from './contexts/ContextProvider';
 
@@ -65,6 +65,9 @@ const App = () => {
                 {/* dashboard  */}
                 <Route path="/" element={(<Ecommerce />)} />
                 <Route path="/ecommerce" element={(<Ecommerce />)} />
+
+                 {/* pages  */}
+                <Route path="/orders" element={<Orders />} />
 
               </Routes>
             </div>

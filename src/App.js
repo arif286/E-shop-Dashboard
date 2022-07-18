@@ -2,8 +2,10 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { useEffect } from 'react';
 import { FiSettings } from 'react-icons/fi';
 
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Footer, Navbar, Sidebar, ThemeSettings } from './components';
+import { Ecommerce } from './pages';
 
 import { useStateContext } from './contexts/ContextProvider';
 
@@ -59,6 +61,12 @@ const App = () => {
             </div>
             <div>
               {themeSettings && (<ThemeSettings />)}
+               <Routes>
+                {/* dashboard  */}
+                <Route path="/" element={(<Ecommerce />)} />
+                <Route path="/ecommerce" element={(<Ecommerce />)} />
+
+              </Routes>
             </div>
             <Footer />
           </div>

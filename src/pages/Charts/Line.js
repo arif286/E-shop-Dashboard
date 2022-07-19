@@ -1,4 +1,3 @@
-import React from 'react';
 
 import { ChartsHeader, LineChart } from '../../components';
 

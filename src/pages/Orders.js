@@ -20,6 +20,7 @@ const Orders = () => {
         .catch((err) => { console.log(err);})
         .finally(() => { isMounted = false })
     }, [])
+
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Orders" />
@@ -34,7 +35,6 @@ const Orders = () => {
         editSettings={editing}
       >
         <ColumnsDirective>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           {ordersGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
         </ColumnsDirective>
         <Inject services={[Resize, Sort, ContextMenu, Filter, Page, ExcelExport, Edit, PdfExport]} />

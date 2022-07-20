@@ -2,12 +2,14 @@ import { ColumnDirective, ColumnsDirective, ContextMenu, Edit, ExcelExport, Filt
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import ScaleLoader from "react-spinners/ScaleLoader";
 import { Header } from '../components';
 import { contextMenuItems, ordersGrid } from '../data/dummy';
 
 const Orders = () => {
   const editing = { allowDeleting: true, allowEditing: true };
     const [orders, setOrders] = useState([]);
+    let [loading, setLoading] = useState(true);
 
     useEffect(() => {
       let isMounted = true;
@@ -18,13 +20,23 @@ const Orders = () => {
           }
         })
         .catch((err) => { console.log(err);})
-        .finally(() => { isMounted = false })
+        .finally(() => {
+          isMounted = false
+          setLoading(false);
+        })
     }, [])
+
+    const override= {
+      display: "block",
+      margin: "0 auto",
+      borderColor: "red",
+    };
 
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Orders" />
-      <GridComponent
+     {orders.length? (
+       <GridComponent
         id="gridcomp"
         dataSource={orders}
         allowPaging
@@ -39,6 +51,11 @@ const Orders = () => {
         </ColumnsDirective>
         <Inject services={[Resize, Sort, ContextMenu, Filter, Page, ExcelExport, Edit, PdfExport]} />
       </GridComponent>
+     ):(
+      <div className="flex justify-center">
+        <ScaleLoader color="red" loading={loading} cssOverride={override} size={50} />
+      </div>
+     )}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { ColumnDirective, ColumnsDirective, GridComponent, Inject, Page, Search 
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import HashLoader from "react-spinners/HashLoader";
 import { Header } from '../components';
 import { employeesGrid } from '../data/dummy';
 
@@ -10,6 +11,8 @@ const Employees = () => {
 
   const editing = { allowDeleting: true, allowEditing: true };
   const [employeesList, setEmployeesList] = useState([]);
+  let [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
       let isMounted = true;
@@ -20,13 +23,23 @@ const Employees = () => {
           }
         })
         .catch((err) => { console.log(err);})
-        .finally(() => { isMounted = false })
+        .finally(() => {
+          isMounted = false;
+          setLoading(false);
+         })
     }, [])
 
+    const override= {
+      display: "block",
+      margin: "0 auto",
+      borderColor: "red",
+    };
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Employees" />
-      <GridComponent
+      {
+        employeesList.length? (
+        <GridComponent
         dataSource={employeesList}
         width="auto"
         allowPaging
@@ -41,6 +54,10 @@ const Employees = () => {
         <Inject services={[Search, Page]} />
 
       </GridComponent>
+      ):(
+        <HashLoader color="red" loading={loading} cssOverride={override} size={50} />
+      )
+      }
     </div>
   );
 };

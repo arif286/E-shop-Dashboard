@@ -4,7 +4,6 @@ import { useStateContext } from '../../contexts/ContextProvider';
 
 const Pie = ({ id, data, legendVisiblity, height }) => {
   const { currentMode } = useStateContext();
-  console.log("data",data);
 
   return (
     <AccumulationChartComponent

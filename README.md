@@ -1,10 +1,10 @@
 # Getting Started with e-shop dashboard
 
-This project was tailwind with [Create React App](https://github.com/facebook/create-react-app).
+This project is tailwind with [Create React App](https://github.com/facebook/create-react-app).
 
 # overview
 
-This application is contain a E-commerce dashboard, where a admin can monitor the sales, orders, customer and employees. Admin can track the orders, and admin can see the sales of per months and monthly revenue. Also Admin can monitor the customer interest by analytic.
+This application is contain a E-commerce dashboard, where a admin can monitor the sales, orders, customer and employees. Admin can track the orders, and  can see the sales of per months and monthly revenue. Also Admin can monitor the customer interest by analytic.
 
 ## Available Scripts
 
